@@ -8,14 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
-            background-color: #ADD8E6;
+            background-color: #2bbcec;
             text-align: center;
+        }
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin-top: 20px;
         }
         .board {
             display: grid;
             grid-template-columns: repeat(3, 100px);
             grid-template-rows: repeat(3, 100px);
-            gap: 5px;
+            gap: 15px;
             justify-content: center;
             margin-top: 20px;
         }
@@ -23,29 +28,46 @@
             width: 100px;
             height: 100px;
             background-color: white;
-            border: 2px solid #007BFF;
             font-size: 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 8px;
+            box-shadow: 10px 6px 4px 1px rgba(0,0,0,0.59);
+            -webkit-box-shadow: 10px 6px 4px 1px rgba(0,0,0,0.59);
+            -moz-box-shadow: 10px 6px 4px 1px rgba(0,0,0,0.59);
             cursor: pointer;
             font-weight: bold;
         }
         .cell.X {
-            color: red;
+            color: #2bbcec;
+            font-size: 12vmin;
         }
         .cell.O {
-            color: green;
+            color: #2bbcec;
+            font-size: 12vmin;
         }
         .cell:hover {
-            background-color: #cce5ff;
+        transform: translateX(5px) translateY(5px);
+        box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.01);
+        transition: all 0.2s ease-in-out;
+        }
+        button {
+            font-size: 30px;
+            margin-top: 30px;
+            color: #ffffff;
+            background-color: rgb(230, 38, 38);
+            padding: 5px 130px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 10px 6px 4px 1px rgba(0,0,0,0.59);
         }
     </style>
 </head>
 <body>
     <h1 class="mt-4">Tic-Tac-Toe</h1>
     <div class="board" id="board"></div>
-    <button class="btn btn-primary mt-3" onclick="resetGame()">Reset</button>
+    <button onclick="resetGame()">Reset</button>
 
     <script>
         let board = ['', '', '', '', '', '', '', '', ''];
@@ -86,7 +108,10 @@
                     setTimeout(() => {
                         Swal.fire({
                             title: board[a] + " Wins!",
-                            icon: "success"
+                            imageUrl: "trophy.png",
+                            imageWidth: 100,
+                            imageHeight: 100,
+                            imageAlt: "Trophy"
                         });
                         resetGame();
                     }, 100);
